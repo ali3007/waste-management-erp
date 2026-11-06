@@ -1,0 +1,266 @@
+/* =====================================================================
+   themes.css — design tokens
+   Every colour, shadow and radius in the product resolves to a variable
+   here, so a reseller can rebrand the ERP without touching component CSS.
+   ===================================================================== */
+
+:root {
+    /* Brand ------------------------------------------------------- */
+    --primary: #17a06a;
+    --primary-strong: #12855a;
+    --primary-soft: rgba(23, 160, 106, 0.12);
+    --primary-contrast: #ffffff;
+
+    /* Status ------------------------------------------------------ */
+    --success: #17a06a;
+    --danger: #d64550;
+    --warning: #d9902b;
+    --info: #3a7bd5;
+
+    /* Surfaces ---------------------------------------------------- */
+    --bg: #e9edec;
+    --bg-accent: #eff3f1;
+    --surface: #eef2f0;
+    --surface-raised: #f4f7f5;
+    --surface-sunken: #e4e9e7;
+
+    /* Text -------------------------------------------------------- */
+    --text: #1f2a27;
+    --text-muted: #6d807a;
+    --text-faint: #93a39e;
+
+    /* Lines ------------------------------------------------------- */
+    --border: rgba(31, 42, 39, 0.08);
+    --border-strong: rgba(31, 42, 39, 0.16);
+
+    /* Neomorphic shadow pair -------------------------------------- */
+    --shadow-light: #ffffff;
+    --shadow-dark: #c6cecb;
+
+    --shadow-raised:
+        6px 6px 14px var(--shadow-dark),
+        -6px -6px 14px var(--shadow-light);
+    --shadow-raised-sm:
+        3px 3px 7px var(--shadow-dark),
+        -3px -3px 7px var(--shadow-light);
+    --shadow-raised-lg:
+        14px 14px 32px var(--shadow-dark),
+        -14px -14px 32px var(--shadow-light);
+    --shadow-inset:
+        inset 4px 4px 9px var(--shadow-dark),
+        inset -4px -4px 9px var(--shadow-light);
+    --shadow-inset-sm:
+        inset 2px 2px 5px var(--shadow-dark),
+        inset -2px -2px 5px var(--shadow-light);
+    --shadow-focus: 0 0 0 3px var(--primary-soft);
+
+    /* Geometry ---------------------------------------------------- */
+    --radius-card: 22px;
+    --radius-md: 14px;
+    --radius-sm: 10px;
+    --radius-pill: 999px;
+
+    /* Rhythm ------------------------------------------------------ */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+    --space-6: 32px;
+    --space-7: 48px;
+
+    /* Type -------------------------------------------------------- */
+    --font-body: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    --text-xs: 0.75rem;
+    --text-sm: 0.8125rem;
+    --text-base: 0.9375rem;
+    --text-lg: 1.0625rem;
+    --text-xl: 1.375rem;
+    --text-2xl: 1.75rem;
+
+    /* Motion ------------------------------------------------------ */
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --speed: 220ms;
+    --speed-slow: 420ms;
+
+    --card-width: 430px;
+    color-scheme: light;
+}
+
+/* Dark theme: a genuine dark neomorphic surface set, not an inversion.
+   Shadows stay a dark/darker pair so cards still read as extruded. */
+[data-theme="dark"] {
+    --primary: #2fbd84;
+    --primary-strong: #26a874;
+    --primary-soft: rgba(47, 189, 132, 0.16);
+    --primary-contrast: #06231a;
+
+    --success: #2fbd84;
+    --danger: #ef6b74;
+    --warning: #e5a94a;
+    --info: #6aa0e8;
+
+    --bg: #1c2124;
+    --bg-accent: #20262a;
+    --surface: #222a2e;
+    --surface-raised: #273035;
+    --surface-sunken: #1b2124;
+
+    --text: #e6edea;
+    --text-muted: #9aaaa5;
+    --text-faint: #71827d;
+
+    --border: rgba(230, 237, 234, 0.09);
+    --border-strong: rgba(230, 237, 234, 0.18);
+
+    --shadow-light: #2b3439;
+    --shadow-dark: #13171a;
+
+    --shadow-focus: 0 0 0 3px var(--primary-soft);
+
+    color-scheme: dark;
+}
+
+/* Honour the operating system on a first visit, before a choice is stored.
+   theme.js writes data-theme as soon as the person picks one. */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --primary: #2fbd84;
+        --primary-strong: #26a874;
+        --primary-soft: rgba(47, 189, 132, 0.16);
+        --primary-contrast: #06231a;
+
+        --success: #2fbd84;
+        --danger: #ef6b74;
+        --warning: #e5a94a;
+        --info: #6aa0e8;
+
+        --bg: #1c2124;
+        --bg-accent: #20262a;
+        --surface: #222a2e;
+        --surface-raised: #273035;
+        --surface-sunken: #1b2124;
+
+        --text: #e6edea;
+        --text-muted: #9aaaa5;
+        --text-faint: #71827d;
+
+        --border: rgba(230, 237, 234, 0.09);
+        --border-strong: rgba(230, 237, 234, 0.18);
+
+        --shadow-light: #2b3439;
+        --shadow-dark: #13171a;
+
+        color-scheme: dark;
+    }
+}
+
+/* Suppress the cross-fade while the stored theme is applied on load. */
+.theme-preload * {
+    transition: none !important;
+}
+
+/* =====================================================================
+   VISUAL REFINEMENT — CSS ONLY
+   Keeps the existing theme architecture and all existing variables.
+   ===================================================================== */
+
+:root {
+    --primary: #168b63;
+    --primary-strong: #0f7653;
+    --primary-soft: rgba(22, 139, 99, 0.11);
+
+    --bg: #edf2f0;
+    --bg-accent: #f4f7f6;
+    --surface: #f1f5f3;
+    --surface-raised: #f8faf9;
+    --surface-sunken: #e5ebe8;
+
+    --text: #1c2a26;
+    --text-muted: #667873;
+    --text-faint: #8b9b96;
+
+    --border: rgba(28, 42, 38, 0.075);
+    --border-strong: rgba(28, 42, 38, 0.14);
+
+    --shadow-light: rgba(255,255,255,.96);
+    --shadow-dark: rgba(183,195,190,.72);
+
+    --shadow-raised:
+        8px 8px 20px var(--shadow-dark),
+        -7px -7px 18px var(--shadow-light);
+
+    --shadow-raised-sm:
+        4px 4px 10px var(--shadow-dark),
+        -4px -4px 10px var(--shadow-light);
+
+    --shadow-raised-lg:
+        18px 18px 40px var(--shadow-dark),
+        -16px -16px 34px var(--shadow-light);
+
+    --shadow-inset:
+        inset 4px 4px 10px var(--shadow-dark),
+        inset -4px -4px 10px var(--shadow-light);
+
+    --shadow-inset-sm:
+        inset 2px 2px 6px var(--shadow-dark),
+        inset -2px -2px 6px var(--shadow-light);
+
+    --radius-card: 20px;
+    --radius-md: 13px;
+    --radius-sm: 9px;
+}
+
+[data-theme="dark"] {
+    --bg: #171d1f;
+    --bg-accent: #1d2427;
+    --surface: #20282c;
+    --surface-raised: #263035;
+    --surface-sunken: #181e21;
+
+    --text: #e9f0ed;
+    --text-muted: #a0b0aa;
+    --text-faint: #71827d;
+
+    --border: rgba(233,240,237,.08);
+    --border-strong: rgba(233,240,237,.15);
+
+    --shadow-light: rgba(49,60,65,.72);
+    --shadow-dark: rgba(9,12,14,.82);
+
+    --shadow-raised:
+        8px 8px 20px var(--shadow-dark),
+        -7px -7px 18px var(--shadow-light);
+
+    --shadow-raised-sm:
+        4px 4px 10px var(--shadow-dark),
+        -4px -4px 10px var(--shadow-light);
+
+    --shadow-raised-lg:
+        18px 18px 40px var(--shadow-dark),
+        -16px -16px 34px var(--shadow-light);
+
+    --shadow-inset:
+        inset 4px 4px 10px var(--shadow-dark),
+        inset -4px -4px 10px var(--shadow-light);
+
+    --shadow-inset-sm:
+        inset 2px 2px 6px var(--shadow-dark),
+        inset -2px -2px 6px var(--shadow-light);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg: #171d1f;
+        --bg-accent: #1d2427;
+        --surface: #20282c;
+        --surface-raised: #263035;
+        --surface-sunken: #181e21;
+        --text: #e9f0ed;
+        --text-muted: #a0b0aa;
+        --text-faint: #71827d;
+        --shadow-light: rgba(49,60,65,.72);
+        --shadow-dark: rgba(9,12,14,.82);
+    }
+}

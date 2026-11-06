@@ -1,0 +1,51 @@
+/* Attendance module — builds on app.css / hr.css tokens; nothing here redefines the theme. */
+.att-clock { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-3); margin-bottom: var(--space-4); }
+.att-clock__time { font-size: var(--text-2xl); font-weight: 700; font-variant-numeric: tabular-nums; color: var(--text); }
+.att-clock__date { color: var(--text-muted); font-size: var(--text-sm); }
+.att-note { color: var(--text-muted); font-size: var(--text-sm); margin: 0 0 var(--space-4); }
+.att-grid { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); margin-bottom: var(--space-5); }
+.att-grid--2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.att-stat { padding: var(--space-4); }
+.att-stat__label { font-size: var(--text-xs); text-transform: uppercase; letter-spacing: .04em; color: var(--text-faint); font-weight: 700; }
+.att-stat__value { font-size: var(--text-2xl); font-weight: 700; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.att-stat__meta { font-size: var(--text-xs); color: var(--text-muted); }
+.att-stat--present .att-stat__value { color: var(--success); }
+.att-stat--absent .att-stat__value { color: var(--danger); }
+.att-stat--review .att-stat__value, .att-stat--incomplete .att-stat__value { color: var(--warning); }
+.att-stat--leave .att-stat__value, .att-stat--event .att-stat__value { color: var(--info); }
+
+/* status badges (one palette for every screen) */
+.att-st { white-space: nowrap; }
+.att-st--present { background: rgba(23,160,106,.16); color: var(--success); }
+.att-st--absent { background: rgba(214,69,80,.14); color: var(--danger); }
+.att-st--incomplete, .att-st--pending_review { background: rgba(217,144,43,.18); color: var(--warning); }
+.att-st--leave { background: rgba(58,123,213,.14); color: var(--info); }
+.att-st--off_day, .att-st--holiday { background: var(--surface-sunken); color: var(--text-muted); }
+.att-st--checked_in { background: rgba(58,123,213,.12); color: var(--info); }
+.att-st--not_marked { background: transparent; color: var(--text-muted); box-shadow: inset 0 0 0 1px var(--border-strong); }
+
+.att-window { display: inline-flex; gap: var(--space-2); flex-wrap: wrap; font-size: var(--text-sm); color: var(--text-muted); }
+.att-window strong { color: var(--text); }
+.att-actions { display: flex; gap: var(--space-2); flex-wrap: wrap; justify-content: flex-end; }
+.att-actions .btn[disabled] { opacity: .45; cursor: not-allowed; }
+.att-hint { display: block; font-size: var(--text-xs); color: var(--text-faint); white-space: normal; }
+.att-own { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-bottom: var(--space-4); }
+.att-own__cell { padding: var(--space-4); border-radius: var(--radius-md); background: var(--surface-sunken); }
+.att-own__cell b { display: block; font-size: var(--text-xl); font-variant-numeric: tabular-nums; }
+.att-big-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.att-big-actions .btn { min-width: 170px; min-height: 48px; font-size: var(--text-lg); }
+.att-tabs { display: flex; gap: var(--space-2); flex-wrap: wrap; margin-bottom: var(--space-4); }
+.att-tabs a { padding: var(--space-2) var(--space-4); border-radius: var(--radius-pill); text-decoration: none; color: var(--text-muted); box-shadow: var(--shadow-raised-sm); font-size: var(--text-sm); }
+.att-tabs a.is-active { background: var(--primary-soft); color: var(--primary-strong); font-weight: 700; }
+.att-form-grid { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); align-items: end; }
+.att-form-grid .field { margin: 0; }
+.att-pager { display: flex; gap: var(--space-3); align-items: center; justify-content: center; margin-top: var(--space-4); }
+.att-pager__info { color: var(--text-muted); font-size: var(--text-sm); }
+.att-diff { font-family: var(--font-mono); font-size: var(--text-xs); white-space: pre-wrap; word-break: break-word; max-width: 340px; }
+.att-empty { padding: var(--space-6); text-align: center; color: var(--text-muted); }
+.att-alert-inline { padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); background: rgba(217,144,43,.14); color: var(--text); margin-bottom: var(--space-4); font-size: var(--text-sm); }
+.att-mono { font-family: var(--font-mono); font-size: var(--text-xs); word-break: break-all; }
+@media (max-width: 720px) {
+    .att-big-actions .btn { flex: 1 1 100%; }
+    .table .cell-actions { flex-wrap: wrap; }
+}

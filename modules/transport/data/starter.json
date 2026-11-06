@@ -1,0 +1,28 @@
+{
+  "_about": "Optional starter suggestions offered on Transport Configuration > Quick start. Nothing here is installed automatically: an authorised person ticks what they want and confirms. Edit this file to change the suggestions.",
+  "vehicle_type": [
+    {"name": "Loader Rickshaw"}, {"name": "Tractor Trolley"}, {"name": "Compactor"}, {"name": "Dumper"}, {"name": "Mini Truck"}
+  ],
+  "vehicle_status": [
+    {"name": "Active", "category": "active", "is_default": 1},
+    {"name": "Under Maintenance", "category": "maintenance"},
+    {"name": "Out of Service", "category": "out_of_service"},
+    {"name": "Inactive", "category": "inactive"}
+  ],
+  "ownership_type": [
+    {"name": "Company Owned"}, {"name": "Rented"}, {"name": "Contracted"}
+  ],
+  "document_type": [
+    {"name": "Fitness Certificate", "is_required": 1, "requires_expiry": 1},
+    {"name": "Registration Copy", "is_required": 1, "requires_expiry": 0},
+    {"name": "Insurance", "is_required": 0, "requires_expiry": 1},
+    {"name": "Token Tax", "is_required": 0, "requires_expiry": 1},
+    {"name": "Route Permit", "is_required": 0, "requires_expiry": 1}
+  ],
+  "maintenance_type": [
+    {"name": "Routine Service"}, {"name": "Repair"}, {"name": "Engine Work"}, {"name": "Tyre"}, {"name": "Electrical"}, {"name": "Body Work"}
+  ],
+  "fuel_type": [
+    {"name": "Diesel"}, {"name": "Petrol"}
+  ]
+}

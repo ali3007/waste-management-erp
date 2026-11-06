@@ -1,0 +1,110 @@
+/* =====================================================================
+   transport.css — Transport module.
+   Adds only what the shared kit and hr.css do not have. Every colour,
+   shadow, radius and spacing value is a theme token, so light/dark and
+   rebranding work automatically.
+   ===================================================================== */
+
+.trn-tabs { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-4); }
+.trn-tab {
+    padding: 8px 16px; border-radius: var(--radius-pill); background: var(--surface);
+    box-shadow: var(--shadow-raised-sm); color: var(--text-muted); font-size: var(--text-sm); text-decoration: none;
+}
+.trn-tab:hover { color: var(--text); }
+.trn-tab.is-active { color: var(--primary-contrast); background: var(--primary); box-shadow: none; }
+.trn-tab small { opacity: .75; margin-left: 4px; }
+
+.trn-search { display: flex; gap: var(--space-2); align-items: center; margin-bottom: var(--space-4); position: relative; }
+.trn-search .input { flex: 1; min-width: 0; padding-left: 40px; }
+.trn-search .control__icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); pointer-events: none; z-index: 1; display: grid; }
+
+.trn-split { align-items: start; }
+.trn-inline-filter { display: flex; gap: var(--space-2); margin-bottom: var(--space-3); flex-wrap: wrap; }
+.trn-inline-filter .control { flex: 1; min-width: 160px; }
+.trn-inline-filter .select { width: auto; }
+.trn-form-grid { display: grid; gap: var(--space-4); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.trn-form-grid .is-wide { grid-column: 1 / -1; }
+.trn-fieldset { border: 0; margin: 0 0 var(--space-5); padding: 0; min-width: 0; }
+.trn-fieldset > legend { padding: 0; margin-bottom: var(--space-3); font-weight: 650; color: var(--primary-strong); }
+.trn-note { margin: 0 0 var(--space-3); color: var(--text-muted); font-size: var(--text-sm); }
+
+/* Pickers */
+.picker { position: relative; }
+.picker__list {
+    position: absolute; left: 0; right: 0; top: calc(100% + 4px); z-index: 30; margin: 0; padding: 6px; list-style: none;
+    max-height: 280px; overflow-y: auto; background: var(--surface-raised); border-radius: var(--radius-md);
+    box-shadow: var(--shadow-raised-lg); border: 1px solid var(--border);
+}
+.picker__list li { padding: 8px 10px; border-radius: var(--radius-sm); cursor: pointer; font-size: var(--text-sm); }
+.picker__list li strong { display: block; }
+.picker__list li span { color: var(--text-muted); font-size: var(--text-xs); }
+.picker__list li:hover, .picker__list li.is-active { background: var(--primary-soft); }
+.picker__list li.is-empty { cursor: default; color: var(--text-muted); }
+.picker.is-selected .input { font-weight: 600; }
+
+/* Vehicle profile */
+.trn-profile { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: var(--space-5); align-items: start; }
+.trn-photo {
+    width: 100%; aspect-ratio: 4 / 3; border-radius: var(--radius-md); background: var(--surface-sunken);
+    box-shadow: var(--shadow-inset-sm); display: grid; place-items: center; color: var(--text-faint); overflow: hidden;
+}
+.trn-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.trn-photo svg { width: 46px; height: 46px; }
+.trn-title { margin: 0; font-size: var(--text-xl); }
+.trn-badges { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 var(--space-3); }
+.trn-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: var(--space-3); }
+.trn-facts { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: var(--space-3) var(--space-4); margin: 0; }
+.trn-facts dt { font-size: var(--text-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: .04em; }
+.trn-facts dd { margin: 2px 0 0; font-weight: 600; word-break: break-word; }
+
+/* Document cards */
+.trn-doc-grid { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.trn-doc { padding: var(--space-4); border-radius: var(--radius-md); background: var(--surface); box-shadow: var(--shadow-raised-sm); }
+.trn-doc h4 { margin: 0 0 6px; font-size: var(--text-base); display: flex; justify-content: space-between; gap: 8px; align-items: flex-start; }
+.trn-doc p { margin: 0 0 4px; font-size: var(--text-sm); color: var(--text-muted); }
+.trn-doc--missing { box-shadow: var(--shadow-inset-sm); border: 1px dashed var(--border-strong); background: transparent; }
+.trn-doc .trn-actions { margin-top: 10px; }
+
+/* Panels that open an inline form */
+.trn-panel { margin-top: var(--space-3); padding: var(--space-4); border-radius: var(--radius-md); background: var(--surface-sunken); box-shadow: var(--shadow-inset-sm); }
+details.trn-more > summary { cursor: pointer; font-weight: 600; color: var(--primary-strong); list-style: none; }
+details.trn-more > summary::-webkit-details-marker { display: none; }
+details.trn-more[open] > summary { margin-bottom: var(--space-3); }
+
+/* Dashboard */
+.trn-filters .filter-panel__grid { grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); }
+.trn-chart-box { position: relative; height: 280px; }
+.trn-chart-box--tall { height: 360px; }
+.trn-chart-empty { position: absolute; inset: 0; display: grid; place-items: center; color: var(--text-muted); font-size: var(--text-sm); text-align: center; padding: 20px; }
+.trn-loading { opacity: .55; transition: opacity var(--speed) var(--ease); pointer-events: none; }
+.trn-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 var(--space-3); }
+.trn-chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: var(--radius-pill); background: var(--primary-soft); color: var(--primary-strong); font-size: var(--text-xs); }
+.trn-chip button { border: 0; background: none; color: inherit; cursor: pointer; padding: 0; line-height: 1; }
+.trn-kv { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: var(--text-sm); }
+.trn-kv:last-child { border-bottom: 0; }
+
+/* Misc */
+.trn-money { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.trn-muted { color: var(--text-muted); }
+.trn-range { display: flex; gap: 6px; flex-wrap: wrap; }
+.trn-sort a { color: inherit; text-decoration: none; white-space: nowrap; }
+.trn-sort a:hover { color: var(--primary-strong); }
+.trn-diff { font-size: var(--text-xs); margin: 4px 0 0; color: var(--text-muted); word-break: break-word; }
+.trn-diff b { color: var(--text); font-weight: 600; }
+.trn-report-groups { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+.trn-report-link { display: block; padding: 10px 12px; margin-bottom: 6px; border-radius: var(--radius-sm); text-decoration: none; color: var(--text); background: var(--surface); box-shadow: var(--shadow-raised-sm); }
+.trn-report-link small { display: block; color: var(--text-muted); font-size: var(--text-xs); margin-top: 2px; }
+.trn-report-link:hover { background: var(--primary-soft); }
+
+@media (max-width: 820px) {
+    .trn-profile { grid-template-columns: 1fr; }
+    .trn-photo { max-width: 360px; }
+    .trn-form-grid { grid-template-columns: 1fr; }
+}
+@media print {
+    .trn-search, .trn-tabs, .trn-actions, .filter-panel { display: none !important; }
+}
+
+/* Two-column field row (the installer's rule is not loaded inside the app shell). */
+.shell .field-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 var(--space-4); }
+@media (max-width: 820px) { .shell .field-row { grid-template-columns: minmax(0, 1fr); } }

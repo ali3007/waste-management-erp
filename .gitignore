@@ -1,0 +1,18 @@
+# Generated at install time — holds database credentials.
+/database/config.generated.php
+/database/installed.lock
+
+# Runtime output.
+/storage/logs/*
+!/storage/logs/.gitkeep
+/uploads/company/logos/*
+/uploads/company/avatars/*
+!/uploads/company/logos/.gitkeep
+!/uploads/company/avatars/.gitkeep
+
+# Editors and operating systems.
+.DS_Store
+Thumbs.db
+*.swp
+.idea/git add .
+.vscode/

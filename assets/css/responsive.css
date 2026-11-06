@@ -1,0 +1,235 @@
+/* =====================================================================
+   responsive.css — breakpoint behaviour.
+   Loaded last so its overrides win. The fixed-width desktop cards
+   become fluid here without losing their proportions.
+   ===================================================================== */
+
+/* Laptop and below */
+@media (max-width: 1200px) {
+    .grid--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+    .sidebar {
+        position: fixed;
+        top: 0; bottom: 0; left: 0;
+        z-index: 50;
+        transform: translateX(-100%);
+        transition: transform var(--speed-slow) var(--ease);
+    }
+
+    .sidebar.is-open { transform: none; }
+
+    .sidebar-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(12, 18, 16, 0.45);
+        z-index: 40;
+        display: none;
+    }
+    .sidebar-backdrop.is-open { display: block; }
+
+    .sidebar-toggle { display: grid; place-items: center; }
+
+    .install-card { padding: var(--space-5); }
+    .steps__item span:last-child { display: none; }
+    .steps__item:not(:last-child)::after { left: calc(50% + 22px); right: calc(-50% + 22px); }
+}
+
+/* Large phone */
+@media (max-width: 768px) {
+    :root { --space-6: 26px; --space-7: 34px; }
+
+    .grid--2,
+    .grid--3 { grid-template-columns: minmax(0, 1fr); }
+
+    .field-row { grid-template-columns: minmax(0, 1fr); }
+
+    .content { padding: 0 var(--space-4) var(--space-5); }
+    .topbar { padding: var(--space-4); }
+
+    .definition { grid-template-columns: minmax(0, 1fr); gap: 0 0; }
+    .definition dt { margin-top: var(--space-3); }
+
+    .summary dl { grid-template-columns: minmax(0, 1fr); }
+    .summary dt { margin-top: var(--space-2); }
+}
+
+/* Phone — the card goes fluid but keeps its radius, padding and rhythm. */
+@media (max-width: 560px) {
+    .auth-page { padding: 84px var(--space-4) var(--space-5); justify-content: flex-start; }
+
+    .auth-page__toolbar { top: var(--space-3); right: var(--space-3); }
+
+    .auth-card {
+        max-width: 100%;
+        padding: var(--space-5) var(--space-4) var(--space-4);
+        border-radius: var(--radius-md);
+    }
+
+    .auth-logo { width: 68px; height: 68px; border-radius: 20px; }
+    .auth-card__title { font-size: 1rem; }
+
+    .auth-form__options { flex-direction: row; gap: var(--space-2); }
+
+    .install-page { padding: 76px var(--space-3) var(--space-5); justify-content: flex-start; }
+    .install-card { padding: var(--space-4); border-radius: var(--radius-md); }
+    .install-card__head { gap: var(--space-3); }
+    .install-card__head h1 { font-size: var(--text-lg); }
+
+    .step-actions { flex-direction: column-reverse; }
+    .step-actions .btn { width: 100%; }
+
+    .uploader { flex-direction: column; text-align: center; }
+
+    .user-chip__meta { display: none; }
+    .user-chip { padding: var(--space-1); }
+
+    .page-footer { flex-direction: column; gap: var(--space-1); }
+}
+
+/* Small phone — keep inputs comfortable, never let content overflow. */
+@media (max-width: 380px) {
+    body { font-size: 0.9rem; }
+    .btn { padding: 0 var(--space-4); }
+    .steps { gap: var(--space-1); }
+    .steps__dot { width: 30px; height: 30px; font-size: var(--text-xs); }
+    .steps__item:not(:last-child)::after { top: 15px; left: calc(50% + 20px); right: calc(-50% + 20px); }
+}
+
+/* Short viewports (landscape phones): stop vertical centring from clipping. */
+@media (max-height: 640px) {
+    .auth-page,
+    .install-page { justify-content: flex-start; padding-top: 72px; }
+}
+
+/* Nothing in the product may scroll sideways. */
+html, body { max-width: 100%; overflow-x: hidden; }
+
+@media print {
+    .theme-toggle, .sidebar, .topbar__actions { display: none !important; }
+    body { background: #fff; }
+    .card, .auth-card, .install-card { box-shadow: none; border: 1px solid #ddd; }
+}
+
+/* =====================================================================
+   VISUAL REFINEMENT — responsive finishing layer
+   Loaded last intentionally.
+   ===================================================================== */
+
+@media (max-width: 1200px) {
+    .grid--3 {
+        gap: 14px;
+    }
+
+    .sidebar {
+        width: 238px;
+        flex-basis: 238px;
+    }
+}
+
+@media (max-width: 992px) {
+    .sidebar {
+        width: min(290px, 88vw);
+        max-width: 290px;
+        border-radius: 0 18px 18px 0;
+    }
+
+    .sidebar.is-open {
+        box-shadow: 18px 0 45px rgba(0,0,0,.16);
+    }
+
+    .sidebar-toggle {
+        border: 1px solid var(--border);
+    }
+
+    .sidebar-backdrop {
+        backdrop-filter: blur(2px);
+    }
+}
+
+@media (max-width: 768px) {
+    .grid--2,
+    .grid--3 {
+        gap: 12px;
+    }
+
+    .definition {
+        font-size: .875rem;
+    }
+
+    .stat__value {
+        font-size: 1.45rem;
+    }
+
+    .modal {
+        align-items: flex-end;
+        padding: 10px;
+    }
+
+    .modal__dialog {
+        width: 100%;
+        border-radius: 18px;
+        padding: 18px;
+        max-height: 92vh;
+    }
+
+    .modal__actions {
+        flex-wrap: wrap;
+    }
+
+    .modal__actions .btn {
+        flex: 1 1 130px;
+    }
+}
+
+@media (max-width: 560px) {
+    .auth-page__toolbar {
+        width: auto;
+    }
+
+    .page-footer {
+        padding-left: 14px;
+        padding-right: 14px;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .pagination {
+        flex-wrap: wrap;
+    }
+
+    .pagination a,
+    .pagination span {
+        min-width: 34px;
+        height: 34px;
+    }
+}
+
+@media (max-width: 380px) {
+    .content {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    .topbar {
+        gap: 9px;
+    }
+
+    .theme-toggle {
+        transform: scale(.92);
+        transform-origin: right center;
+    }
+}
+
+/* Accessibility: keep motion restrained for users who request it. */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}

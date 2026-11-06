@@ -1,0 +1,213 @@
+/* =====================================================================
+   auth.css — login, forgot password, reset password, activation.
+   The installation wizard reuses these same tokens and components.
+   ===================================================================== */
+
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-5) var(--space-4);
+    gap: var(--space-5);
+}
+
+.auth-page__toolbar {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.auth-card {
+    width: 100%;
+    max-width: var(--card-width);
+    padding: var(--space-6) var(--space-6) var(--space-5);
+    background: var(--surface);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-raised-lg);
+    animation: auth-card-in var(--speed-slow) var(--ease) both;
+}
+
+@keyframes auth-card-in {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: none; }
+}
+
+.auth-card__head {
+    text-align: center;
+    margin-bottom: var(--space-6);
+}
+
+/* Company logo well — falls back to initials when no logo was uploaded. */
+.auth-logo {
+    width: 84px; height: 84px;
+    margin: 0 auto var(--space-4);
+    border-radius: 24px;
+    background: var(--surface-raised);
+    box-shadow: var(--shadow-raised);
+    display: grid;
+    place-items: center;
+    padding: var(--space-3);
+}
+
+.auth-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.auth-logo__fallback {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: 0.02em;
+}
+
+.auth-card__title {
+    margin: 0 0 var(--space-1);
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1.3;
+}
+
+.auth-card__company {
+    margin: 0;
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+}
+
+.auth-card__lead {
+    margin: var(--space-2) 0 0;
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+}
+
+.auth-form { margin: 0; }
+
+.auth-form__options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    margin: var(--space-2) 0 var(--space-5);
+    font-size: var(--text-sm);
+    flex-wrap: wrap;
+}
+
+.auth-form__link { font-weight: 600; }
+
+.auth-card__foot {
+    margin-top: var(--space-5);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    font-size: var(--text-xs);
+    color: var(--text-faint);
+    flex-wrap: wrap;
+}
+
+.auth-card__foot a { color: var(--text-muted); }
+
+.auth-note {
+    margin-top: var(--space-4);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    background: var(--surface-sunken);
+    box-shadow: var(--shadow-inset-sm);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+}
+
+/* Confirmation screens (reset link sent, activation done). */
+.auth-result { text-align: center; }
+
+.auth-result__icon {
+    width: 66px; height: 66px;
+    margin: 0 auto var(--space-4);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--surface-raised);
+    box-shadow: var(--shadow-raised);
+    color: var(--primary);
+}
+
+.auth-result__icon svg { width: 28px; height: 28px; }
+
+/* Development-only reset link panel, shown until mail delivery is wired up. */
+.dev-token {
+    margin-top: var(--space-4);
+    padding: var(--space-3);
+    border-radius: var(--radius-sm);
+    background: var(--surface-sunken);
+    box-shadow: var(--shadow-inset-sm);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    word-break: break-all;
+    color: var(--text-muted);
+}
+
+/* =====================================================================
+   VISUAL REFINEMENT — authentication
+   ===================================================================== */
+
+.auth-page {
+    position: relative;
+    background:
+        radial-gradient(circle at 50% 0%, var(--primary-soft), transparent 38%);
+}
+
+.auth-card {
+    border: 1px solid var(--border);
+    backdrop-filter: blur(10px);
+}
+
+.auth-logo {
+    width: 78px;
+    height: 78px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+}
+
+.auth-logo img {
+    object-fit: contain;
+    padding: 3px;
+}
+
+.auth-card__title {
+    font-size: 1.2rem;
+    font-weight: 750;
+    letter-spacing: -.015em;
+}
+
+.auth-form .btn--primary {
+    min-height: 48px;
+}
+
+.auth-note,
+.dev-token {
+    border: 1px solid var(--border);
+}
+
+.auth-result__icon {
+    border: 1px solid var(--border);
+}
+
+@media (max-width: 560px) {
+    .auth-logo {
+        width: 64px;
+        height: 64px;
+    }
+
+    .auth-card__title {
+        font-size: 1.05rem;
+    }
+}

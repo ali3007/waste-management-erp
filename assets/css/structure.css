@@ -1,0 +1,69 @@
+/* =====================================================================
+   structure.css — Administrative Structure module.
+   Summary cards reuse .grid/.stat from app.css; list rows reuse the
+   promoted .role-card. This file only adds the breadcrumb trail, which
+   nothing else in the product needed yet.
+   ===================================================================== */
+
+.crumb {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+    font-size: var(--text-sm);
+}
+
+.crumb a { color: var(--text-muted); }
+.crumb a:hover { color: var(--primary-strong); }
+.crumb__current { font-weight: 600; color: var(--text); }
+.crumb__sep { color: var(--text-faint); }
+
+.crumb__inactive {
+    margin-left: var(--space-2);
+    padding: 2px 9px;
+    border-radius: var(--radius-pill);
+    font-size: var(--text-xs);
+    background: var(--surface-sunken);
+    box-shadow: var(--shadow-inset-sm);
+    color: var(--danger);
+}
+
+/* =====================================================================
+   VISUAL REFINEMENT — Administrative Structure module
+   ===================================================================== */
+
+.crumb {
+    padding: 9px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    box-shadow: var(--shadow-raised-sm);
+}
+
+.crumb__current {
+    font-weight: 700;
+}
+
+.crumb__sep {
+    opacity: .55;
+}
+
+.crumb__inactive {
+    border: 1px solid var(--border);
+}
+
+.structure-node,
+.tree,
+.tree-node {
+    max-width: 100%;
+}
+
+@media (max-width: 768px) {
+    .crumb {
+        overflow-x: auto;
+        white-space: nowrap;
+        flex-wrap: nowrap;
+        scrollbar-width: thin;
+    }
+}
